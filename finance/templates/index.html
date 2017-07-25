@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Shares</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+     {% for stock in profile %}
+      <tr>
+        <td>{{ stock.symbol }}</td>
+        <td>{{ stock.company }}</td>
+        <td>{{ stock.shares }}</td> 
+        <td>{{ "${:,.2f}".format(stock.one_value) }}</td>
+        <td>{{ "${:,.2f}".format(stock.value) }}</td>
+      </tr>
+    {% endfor %} 
+      
+      
+</tr>
+
+    <tr>
+        <td>CASH</td>
+        <td></td>
+        <td></td> 
+        <td></td>
+        <td>{{ "${:,.2f}".format(users[0].cash) }}</td>
+      </tr>
+    
+    
+  </tbody>
+</table>
+{% endblock %}
